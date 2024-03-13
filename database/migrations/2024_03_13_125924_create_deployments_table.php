@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('site_id')->constrained();
             $table->string('commit');
             $table->string('branch')->default('main');
-            $table->boolean('live')->default(false);
+            $table->boolean('status')->default(false);
         });
     }
 

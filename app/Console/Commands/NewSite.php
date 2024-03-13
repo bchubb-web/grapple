@@ -13,7 +13,7 @@ class NewSite extends Command
      *
      * @var string
      */
-    protected $signature = 'grapple:new {name} {--repo=} {?deploy}';
+    protected $signature = 'grapple:new {name} {--repo=}';
 
     /**
      * The console command description.
@@ -35,11 +35,18 @@ class NewSite extends Command
         $this->line('Creating ' . $data['name']);
 
         $response = Http::post(env('GRAPPLE_MANAGER_URL') . '/site', $data);
-        if (200 !== $response->status()) {
-            $this->error('Site creation failed');
-            return;
+        $status = json_decode($response, true);
+
+        switch ($status) {
+            case 409:
+                $this->error('Site already exists');
+                return;
+            case 500:
+                $this->error('Site creation failed');
+                return;
+            case 201:
+                $this->info('Site ' . $data['name'] . ' created');
+                break;
         }
-        $sites = json_decode($response);
-        $this->info('Site ' . $data['name'] . ' created');
     }
 }
