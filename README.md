@@ -16,7 +16,7 @@ To install on your server, fork this repository, and use laravel forge to deploy
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within grapple, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within grapple, please send an e-mail to Billy via [billy@bchubb.co.uk](mailto:billy@bchubb.co.uk). Security vulnerabilities will be addressed as soon as possible.
 
 ## License
 
